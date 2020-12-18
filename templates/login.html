@@ -14,13 +14,13 @@
     </section>
 
     <section class = "panel">
-        <form class="login">
+        <form class="login" method="POST">
             <h3>Bienvenido</h3>
             <h1>Ingresa a tu cuenta</h1>
             <h2>Correo</h2>
-            <input class="correo-input" type="text" placeholder="nombre@correo.com">
+            <input name="email" class="correo-input" type="text" placeholder="nombre@correo.com" required>
             <h2>Contraseña</h2>
-            <input class="password-input" type="password" placeholder="**********"></br>
+            <input name="password" class="password-input" type="password" placeholder="**********" required></br>
             
             <span class="opciones">
                 <input type="radio" class="radio-button">

@@ -1,17 +1,31 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template,request,redirect,url_for
+import utils
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def login():
-    return render_template('login.html')
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        return redirect(url_for('welcome'))
+    
+    else:
+        return render_template('login.html')
 
 
-@app.route('/sign_up')
+@app.route('/sign_up' , methods=["GET", "POST"])
 def sign_up():
-    return render_template('sign-up.html')
+    if request.method == 'POST':
+        name = request.form['nombre']
+        email = request.form['email']
+        password = request.form['password']
+        return redirect(url_for('welcome'))
+    
+    else:
+        return render_template('sign-up.html')
+
 
 @app.route('/recovery')
 def recovery():
