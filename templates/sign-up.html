@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <section class = "portada">
+    </section>
+
+    <section class = "panel">
+        <a class="back" href="{{ url_for('login') }}">
+            <img class = "back-btn" src="{{ url_for('static', filename='images/icon-back.png')}}" alt="atrás"> <p>Atrás</p>
+            </a>
+        <form class="login">
+            <h1>Registrate</h1>
+            <h3>Crea una cuenta para ingresar</h3>
+            <h2>Correo</h2>
+            <input class="correo-input" type="text" placeholder="nombre@correo.com">
+            <h2>Contraseña</h2>
+            <input class="password-input" type="password" placeholder="**********"></br>
+            <h2>Repite la contraseña</h2>
+            <input class="password-input" type="password" placeholder="**********"></br>
+            
+            <span class="opciones">
+                <input type="radio" class="radio-button">
+                <p>Acepto los </p>
+                <a href="{{ url_for('login') }}">terminos y condiciones</a>
+            </span>
+
+            <button class="login-btn">Ingresa ahora</button>
+
+            <span class="ORLine">
+                <img src="{{ url_for('static', filename='images/Line 5.png')}}" alt="">
+                <img src="{{ url_for('static', filename='images/O.png')}}" alt="">
+                <img src="{{ url_for('static', filename='images/Line 5.png')}}" alt="">
+            </span>
+
+            <button class="login-google-btn">Ingresa con tu cuenta de Google</button>
+
+        </form>
+
+    </section>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+    {{ super() }}
+{% endblock %}
+
+{% block title %} 
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <section class = "portada">
+    </section>
+
+    <section class = "panel">
+        <form class="login">
+            <h3>Bienvenido</h3>
+            <h1>Ingresa a tu cuenta</h1>
+            <h2>Correo</h2>
+            <input class="correo-input" type="text" placeholder="nombre@correo.com">
+            <h2>Contraseña</h2>
+            <input class="password-input" type="password" placeholder="**********"></br>
+            
+            <span class="opciones">
+                <input type="radio" class="radio-button">
+                <p>Recuérdame</p>
+                <a href="{{ url_for('recovery') }}">¿Olvidaste tu contraseña?</a>
+            </span>
+
+            <button class="login-btn">Ingresa ahora</button>
+            <button class="login-google-btn">Ingresa con tu cuenta de Google</button>
+
+            <span class="registrate">
+                <p>¿No tienes una cuenta?     </p>     <a href="{{ url_for('sign_up') }}">Registrate</a>
+            </span>
+        </form>
+
+    </section>
+
+{% endblock %}

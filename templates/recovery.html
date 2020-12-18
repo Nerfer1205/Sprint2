@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<section class = "portada-recovery">
+</section>
+
+<section class = "panel">
+
+    <a class="back" href="{{ url_for('login') }}">
+    <img class = "back-btn" src="{{ url_for('static', filename='images/icon-back.png')}}" alt="atrás"> <p>Atrás</p>
+    </a>
+
+    <form class="login">
+        <h1>¿Has olvidado tu contraseña?</h1>
+        <h2>Ingresa tu correo electronico para</br> recuperar tu contraseña</h2>
+        <input class="correo-input" type="text" placeholder="nombre@correo.com">
+
+        <button class="login-btn">Reiniciar contraseña</button>
+
+    </form>
+
+</section>
+
+{% endblock %}
