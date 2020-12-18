@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+    {{ super() }}
+{% endblock %}
+
+{% block title %} 
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+	
+
+	<div class="wrapper">
+		<div class="contenedor">
+			<img src="{{ url_for('static', filename='images/puente1.jpg') }}">
+		</div>
+		<div class="contenedor">
+			<img src="{{ url_for('static', filename='images/puente2.jpg') }}">
+		</div>
+		<div class="contenedor">
+			<img src="{{ url_for('static', filename='images/puente3.jpg') }}">
+		</div>
+		<div class="contenedor">
+			<img src="{{ url_for('static', filename='images/puente4.jpg') }}">
+		</div>
+		<div class="contenedor">
+			<img src="{{ url_for('static', filename='images/puente5.jpg') }}">
+		</div>
+		<div class="contenedor">
+			<img src="{{ url_for('static', filename='images/puente6.jpg') }}">
+		</div>
+		<div class="contenedor">
+			<img src="{{ url_for('static', filename='images/puente7.jpg') }}">
+		</div>
+		<div class="contenedor">
+			<img src="{{ url_for('static', filename='images/puente8.jpg') }}">
+		</div>
+	</div>
+
+{% endblock %}

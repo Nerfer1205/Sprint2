@@ -16,3 +16,11 @@ def sign_up():
 @app.route('/recovery')
 def recovery():
     return render_template('recovery.html')
+
+@app.route('/welcome')
+def welcome():
+    return render_template('welcome.html')
+
+@app.route('/image')
+def image():
+    return render_template('actualizate_create.html')
