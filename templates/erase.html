@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+    {{ super() }}
+{% endblock %}
+
+{% block title %} 
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <a class="retorno" href="{{ url_for('welcome') }}">
+        <img  src="{{ url_for('static', filename='images/flecha.png')}}">
+    </a>
+
+    <div class="contenedor">
+        <img src="{{ url_for('static', filename='images/puente1.jpg') }}">
+        <div class="info">
+            <p class="text">Nombre de la imagen</p>
+            <p class="text">Descripción de la imagen</p>
+            <div class = "borrar">
+                <p class="text">¿Esta seguro que desea borrar la imagen?</p>
+            </div>
+        </div>
+        <button class="boton_personalizado">Borrar</button>
+        
+    </div>
+
+{% endblock %}

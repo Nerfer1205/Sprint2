@@ -11,40 +11,38 @@
 {% block content %}
 	
 <form>
-	<div class="retorno">
-		<img  src="../imgs/flecha.png">
-	</div>
-	<div class="contenedor">
-	<div class="exterior">
-		<div class="interior">
+	<a class="retorno" href="{{ url_for('welcome') }}">
+		<img  src="{{ url_for('static', filename='images/flecha.png')}}">
+	</a>
+	<section class="contenedor">
+		<div class="exterior">
+			<div class="interior">
+				
+				<img src="{{ url_for('static', filename='images/subida.png')}}">
+				<p>Arrastra tu imagen, o haz click para subirla</p>
+			</div>
 			
-			<img src="../imgs/subida.png">
-			<p>Arrastra tu imagen, o haz click para subirla</p>
 		</div>
-		
-	</div>
-	<div class="info">
-		<p class="text">Nombre de tu imagen</p>
-		<input class="field" type="text" name="nombre">
-		<br>
-		<p class="text">¿Cuál es el tema de tu imagen?</p>
-		<input class="field" type="text" name="tema">
-		<br>
-		<div class="inline">
-			<p class="text">¿Privada?</p>
-			<label class="switch">
-				  <input type="checkbox">
-				  <span class="slider round"></span>
-			</label>
-			<img src="../imgs/candado.png">
+		<div class="info">
+			<p class="text">Nombre de tu imagen</p>
+			<input class="field" type="text" name="nombre">
+			<br>
+			<p class="text">¿Cuál es el tema de tu imagen?</p>
+			<input class="field" type="text" name="tema">
+			<br>
+			<div class="inline">
+				<p class="text">¿Privada?</p>
+				<label class="switch">
+					<input type="checkbox">
+					<span class="slider round"></span>
+				</label>
+				<img src="{{ url_for('static', filename='images/candado.png')}}">
+			</div>
+			<br>
+			<button type="submit" class="boton_personalizado">Guardar</button>
+			
 		</div>
-		<br>
-		<button type="submit" class="boton_personalizado">Guardar</button>
-		
-	</div>
 	
-</div>
+	</section>
 
 </form>
-
-{% endblock %}

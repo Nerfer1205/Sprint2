@@ -24,3 +24,11 @@ def welcome():
 @app.route('/image')
 def image():
     return render_template('actualizate_create.html')
+
+@app.route('/download')
+def download():
+    return render_template('download.html')
+
+@app.route('/erase')
+def erase():
+    return render_template('erase.html')
