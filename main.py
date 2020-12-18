@@ -9,7 +9,10 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        return redirect(url_for('welcome'))
+        if email == 'usuario' and password == 'contraseña':
+            return redirect(url_for('welcome'))
+        else:
+            return render_template('login.html')
     
     else:
         return render_template('login.html')
