@@ -10,12 +10,11 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        res = querys.singUp(email, password)
-        res_ =res[0][0]
-        if res_ == 1:
+
+        if db.auth_user(email, password):
             return redirect(url_for('welcome'))
         else:
-            return render_template('login.html',res = res)
+            return render_template('login.html')
     
     else:
         return render_template('login.html')
