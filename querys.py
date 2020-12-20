@@ -58,3 +58,12 @@ def deleteImagenes(id):
 
     db.commit()
     print("P2")
+
+def selectImagenes(id):
+    db = get_db()
+    res = db.execute(
+        "SELECT * FROM imagenes WHERE id_usuarios = '%s'" % (
+            id
+        )
+    )
+    return res.fetchall()
