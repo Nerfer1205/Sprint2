@@ -23,33 +23,33 @@ def close_db():
         db.close()
 
 
-def insertUsuarios(correo, contrasena):
-    db = get_db()
-    db.execute(
-        "INSERT INTO usuarios (correo, contraseña) VALUES ('%s','%s')" % (
-            correo, contrasena)
-    )
+# def insertUsuarios(correo, contrasena):
+#     db = get_db()
+#     db.execute(
+#         "INSERT INTO usuarios (correo, contraseña) VALUES ('%s','%s')" % (
+#             correo, contrasena)
+#     )
 
-    db.commit()
-    print("P2")
-
-
-def singUp(correo, contraseña):
-    db = get_db()
-    res = db.execute(
-        "SELECT count(id) from usuarios where correo='%s' and contraseña = '%s'"  % (
-            correo, contraseña)
-    )
-    return res.fetchall()
+#     db.commit()
+#     print("P2")
 
 
+# def singUp(correo, contraseña):
+#     db = get_db()
+#     res = db.execute(
+#         "SELECT count(id) from usuarios where correo='%s' and contraseña = '%s'"  % (
+#             correo, contraseña)
+#     )
+#     return res.fetchall()
 
-def insertImagenes(nombre, archivo, usuario):
-    db = get_db()
-    db.execute(
-        "INSERT INTO imagenes (nombre, archivo, usuario) VALUES ('%s','%s','%s')" % (
-            nombre, archivo, usuario)
-    )
 
-    db.commit()
-    print("P2")
+
+# def insertImagenes(nombre, archivo, usuario):
+#     db = get_db()
+#     db.execute(
+#         "INSERT INTO imagenes (nombre, archivo, usuario) VALUES ('%s','%s','%s')" % (
+#             nombre, archivo, usuario)
+#     )
+
+#     db.commit()
+#     print("P2")
