@@ -1,0 +1,10 @@
+click
+dnspytho
+email-validator
+Flask
+idna
+itsdangerous
+Jinja2
+MarkupSafe
+validate-email
+Werkzeug
