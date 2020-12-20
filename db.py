@@ -33,7 +33,7 @@ def close_db():
 #             correo, hashed_password)
 #     )
 
-#     db.commit()
+    db.commit()
 #     print("P2")
 
 
