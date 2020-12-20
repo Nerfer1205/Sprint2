@@ -33,7 +33,7 @@ def insertUsuarios(correo, contrasena):
             correo, hashed_password)
     )
 
-#     db.commit()
+    db.commit()
 #     print("P2")
 
 
