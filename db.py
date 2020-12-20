@@ -33,8 +33,8 @@ def insertUsuarios(correo, contrasena):
             correo, hashed_password)
     )
 
-    db.commit()
-    print("P2")
+#     db.commit()
+#     print("P2")
 
 
 def auth_user(correo, contrasena):
@@ -59,12 +59,12 @@ def auth_user(correo, contrasena):
 
 
 
-def insertImagenes(nombre, archivo, usuario):
-    db = get_db()
-    db.execute(
-        "INSERT INTO imagenes (nombre, archivo, usuario) VALUES ('%s','%s','%s')" % (
-            nombre, archivo, usuario)
-    )
+# def insertImagenes(nombre, archivo, usuario):
+#     db = get_db()
+#     db.execute(
+#         "INSERT INTO imagenes (nombre, archivo, usuario) VALUES ('%s','%s','%s')" % (
+#             nombre, archivo, usuario)
+#     )
 
-    db.commit()
-    print("P2")
+#     db.commit()
+#     print("P2")
