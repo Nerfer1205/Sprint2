@@ -1,5 +1,6 @@
 from flask import Flask, render_template,request,redirect,url_for
 import utils
+import db
 
 app = Flask(__name__)
 
@@ -9,10 +10,12 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        if email == 'usuario' and password == 'contraseña':
+        res = db.singUp(email, password)
+        res_ =res[0][0]
+        if res_ == 1:
             return redirect(url_for('welcome'))
         else:
-            return render_template('login.html')
+            return render_template('login.html',res = res)
     
     else:
         return render_template('login.html')
@@ -21,10 +24,14 @@ def login():
 @app.route('/sign_up' , methods=["GET", "POST"])
 def sign_up():
     if request.method == 'POST':
-        name = request.form['nombre']
         email = request.form['email']
         password = request.form['password']
-        return redirect(url_for('welcome'))
+        conf_pass = request.form['conf_pass']
+        if(password == conf_pass):
+            db.insertUsuarios(email, password)
+        else:
+            return render_template('sign-up.html')
+        return redirect(url_for('login'))
     
     else:
         return render_template('sign-up.html')
