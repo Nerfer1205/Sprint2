@@ -11,7 +11,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
 
-        if db.auth_user(email, password):
+        if querys.autenticar_usuario(email, password):
             return redirect(url_for('welcome'))
         else:
             return render_template('login.html')
@@ -27,7 +27,7 @@ def sign_up():
         password = request.form['password']
         conf_pass = request.form['conf_pass']
         if(password == conf_pass):
-            querys.insertUsuarios(email, password)
+            querys.ingresar_usuario(email, password)
         else:
             return render_template('sign-up.html')
         return redirect(url_for('login'))

@@ -3,30 +3,33 @@ import sqlite3
 from sqlite3 import Error
 from flask import Flask, request, render_template, redirect, url_for, current_app, g
 from db import get_db
+from werkzeug.security import generate_password_hash, check_password_hash
 
-
-def insertUsuarios(correo, contrasena):
+def ingresar_usuario(correo, contrasena):
     db = get_db()
+    contrasena_encriptada = generate_password_hash(contrasena)
     db.execute(
-        "INSERT INTO usuarios (correo, contraseña) VALUES ('%s','%s')" % (
-            correo, contrasena)
+        "INSERT INTO usuarios (correo, contraseña) VALUES ('%s','%s')" % 
+        (correo, contrasena_encriptada)
     )
 
     db.commit()
     print("P2")
 
 
-def singUp(correo, contraseña):
+def autenticar_usuario(correo, contrasena):
     db = get_db()
-    res = db.execute(
-        "SELECT count(id) from usuarios where correo='%s' and contraseña = '%s'"  % (
-            correo, contraseña)
-    )
-    return res.fetchall()
+    res = db.execute("SELECT count(id) from usuarios where correo='%s'"  % (correo))
+    if res.fetchall()[0][0] == 1:
+        res = db.execute(
+        "SELECT contraseña from usuarios where correo='%s'"  % (correo) )
+        return check_password_hash(res.fetchall()[0][0], contrasena)
+    else:
+        return False
 
 
 
-def insertImagenes(nombre, archivo, usuario):
+def insertar_imagen(nombre, archivo, usuario):
     db = get_db()
     db.execute(
         "INSERT INTO imagenes (nombre, archivo, usuario) VALUES ('%s','%s','%s')" % (
@@ -37,7 +40,7 @@ def insertImagenes(nombre, archivo, usuario):
     print("P2")
 
 
-def updateImagenes(nombre,archivo,usuario, id):
+def actualizar_imagen(nombre,archivo,usuario, id):
     db = get_db()
     db.execute(
             
@@ -48,7 +51,7 @@ def updateImagenes(nombre,archivo,usuario, id):
     db.commit()
     print("P2")
 
-def deleteImagenes(id):
+def borrar_imagen(id):
     db = get_db()
     db.execute(
             
@@ -59,7 +62,7 @@ def deleteImagenes(id):
     db.commit()
     print("P2")
 
-def selectImagenes(id):
+def leer_imagen(id):
     db = get_db()
     res = db.execute(
         "SELECT * FROM imagenes WHERE id_usuarios = '%s'" % (

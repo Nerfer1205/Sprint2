@@ -25,37 +25,29 @@ def close_db():
         db.close()
 
 
-def insertUsuarios(correo, contrasena):
-    hashed_password = generate_password_hash(contrasena)
-    db = get_db()
-    db.execute(
-        "INSERT INTO usuarios (correo, contraseña) VALUES ('%s','%s')" % (
-            correo, hashed_password)
-    )
+# def insertUsuarios(correo, contrasena):
+#     hashed_password = generate_password_hash(contrasena)
+#     db = get_db()
+#     db.execute(
+#         "INSERT INTO usuarios (correo, contraseña) VALUES ('%s','%s')" % (
+#             correo, hashed_password)
+#     )
 
 #     db.commit()
 #     print("P2")
 
 
-def auth_user(correo, contrasena):
-    db = get_db()
+# def auth_user(correo, contrasena):
+#     db = get_db()
 
-    res = db.execute( "SELECT count(id) from usuarios where correo='%s'"  % (correo) )
+#     res = db.execute( "SELECT count(id) from usuarios where correo='%s'"  % (correo) )
 
-    print(res)
-    res_fetch2 = res.fetchall()
-    
-    print(res_fetch2)
-
-    if res_fetch2[0][0] == 1:
-        res = db.execute("SELECT contraseña from usuarios where correo='%s'"  % (correo) )
-        res_fetch = res.fetchall()[0][0]
-        print(res_fetch)
-        print( check_password_hash(res_fetch, contrasena) )
-
-        return check_password_hash(res_fetch, contrasena)
-    else:
-        return False;
+#     if res.fetchall()[0][0] == 1:
+#         res = db.execute("SELECT contraseña from usuarios where correo='%s'"  % (correo) )
+        
+#         return check_password_hash(res.fetchall()[0][0], contrasena)
+#     else:
+#         return False;
 
 
 
