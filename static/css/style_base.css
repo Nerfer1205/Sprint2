@@ -13,12 +13,20 @@ p {
 	color:  #c8c5cc ;
 }
 
+.info p{
+  margin-right: 300px;
+}
+
+#archivo{
+  margin-left: 100px;
+}
+
 .barra ul {
   display: flex;
   align-items: center;
   list-style-type: none;
-  margin: 0;
-  padding: 5;
+  margin: 0px;
+  padding: 5px;
   overflow: hidden;
   background-color: #777DA7;
   box-shadow: 0px 0px 10px 1px black;
@@ -102,8 +110,8 @@ li a:hover {
 }
 
 .img_container img{
-	width: 500px;
-	height: 450px;
+	width: 450px;
+	height: 410px;
 	border-radius: 1%;
 	box-shadow: 0px 0px 10px 1px black;
 }
@@ -132,6 +140,7 @@ margin-left: 5px;
   padding: 50px 15px;
   background-color: #777DA7;
   border-radius: 25px;
+  height: 500px;
 }
 
 .exterior{
@@ -167,7 +176,7 @@ margin-left: 5px;
 }
 
 .info img{
-  width: 4%;
+  width: 2%;
   height: 4%;
 
 }
@@ -257,6 +266,10 @@ input.field{
   width: 40%;
 }
 
+details[open] summary:after {
+  opacity: 100;
+}
+
 details {
   opacity: 0;
   font: 16px "Open Sans", Calibri, sans-serif;
@@ -278,12 +291,15 @@ details > summary::-webkit-details-marker {
 }
 
 details > a {
-  border-radius: 0 0 10px 10px;
   background-color: #ddd;
   padding: 2px 6px;
   margin: 0;
   box-shadow: 3px 3px 4px black;
+  display: inline-block;
+  width: 70px;
 }
-a:link, a:visited, a:active {
-  text-decoration:none;
+
+.info {
+  float: right;
+  margin-right: 30px;
 }
