@@ -1,6 +1,8 @@
 from flask import Flask, render_template,request,redirect,url_for
 import utils
 import db
+FOLDER_CARGA = os.path.abspath("resources") # carpeta donde se cargarán las imágenes.
+from werkzeug.utils import secure_filename # para obtener el nombre del archivo de forma segura.
 
 app = Flask(__name__)
 
@@ -44,9 +46,22 @@ def recovery():
 def welcome():
     return render_template('welcome.html')
 
-@app.route('/image')
+@app.route('/image',methods=('GET', 'POST'))  
 def image():
-    return render_template('actualizate_create.html')
+    path = ''
+    if request.method == 'POST':
+        archivo = request.files["archivo"]
+        nombre = request.form["nombre"]
+        tema = request.form["tema"]
+        try:
+            estado = request.form["estado"]
+        except:
+            estado = 'off'
+        filename = secure_filename(archivo.filename) # obtener el nombre del archivo de forma segura.
+        path = os.path.join(app.config["FOLDER_CARGA"], filename) # ruta de la imagen, incluyendola.
+        archivo.save(path)
+        flash( 'Imagen guardada con éxito.' )
+    return render_template('actualizate_create.html',path = path) 
 
 @app.route('/download')
 def download():

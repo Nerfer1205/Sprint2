@@ -10,7 +10,7 @@
 
 {% block content %}
 	
-<form>
+<form action="{{ url_for('image')}}" method="POST" enctype="multipart/form-data">
 	<a class="retorno" href="{{ url_for('welcome') }}">
 		<img  src="{{ url_for('static', filename='images/flecha.png')}}">
 	</a>
@@ -19,27 +19,30 @@
 			<div class="interior">
 				
 				<img src="{{ url_for('static', filename='images/subida.png')}}">
-				<p>Arrastra tu imagen, o haz click para subirla</p>
+				<input id="archivo" type="file" name="archivo" required>
+				{% if path %}
+        			<p>Imagen subida con exito</p>
+    			{% endif %}
 			</div>
 			
 		</div>
 		<div class="info">
 			<p class="text">Nombre de tu imagen</p>
-			<input class="field" type="text" name="nombre">
+			<input  class="field" type="text" name="nombre" required>
 			<br>
 			<p class="text">¿Cuál es el tema de tu imagen?</p>
-			<input class="field" type="text" name="tema">
+			<input class="field" type="text" name="tema" required>
 			<br>
 			<div class="inline">
 				<p class="text">¿Privada?</p>
 				<label class="switch">
-					<input type="checkbox">
+					<input type="checkbox" name="estado">
 					<span class="slider round"></span>
 				</label>
 				<img src="{{ url_for('static', filename='images/candado.png')}}">
 			</div>
 			<br>
-			<button type="submit" class="boton_personalizado">Guardar</button>
+			<button type="submit" class="boton_personalizado" value="Guardar Imagen">Guardar</button>
 			
 		</div>
 	
