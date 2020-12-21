@@ -1,8 +1,7 @@
 body {
-    
     margin: 0;
     padding: 0;
-    display: flex;
+    display: block;
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
 }
@@ -25,9 +24,85 @@ h2 {
     margin:5px 5px 10px 5px;
 }
 
+
+nav{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #494949;
+}
+
+.nav-links{
+    display:flex;
+    justify-content: space-around;
+    width: 90%;
+}
+
+.nav-links li{
+    float: left;
+    list-style: none;
+}
+
+.nav-links a {
+    color:rgb(200, 200, 200);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.buscador{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    width: 500px;
+    height: 50px;
+}
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.buscador input#search{
+    width: 500px;
+    height: 50px;
+    background: #2b303b;
+    border: none;
+    align-self: center;
+    font-size: 10pt;
+    float: left;
+    color: #474747;
+    padding-left: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+        
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+}  
+
+.mero-daño {
+    display: flex;
+    flex-direction: row;
+    min-height: 92vh;
+}
+
 .portada {
     width: 50%;
     display: flex;
+    flex-direction: row;
     align-items: c;
     background-image: url("https://images.pexels.com/photos/4388593/pexels-photo-4388593.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     background-repeat: no-repeat;
@@ -63,7 +138,7 @@ h2 {
 
 .back-btn{
     position: absolute ;
-    top: 9%; 
+    top: 12%; 
     left: 58%;
     width: 20px;
     height: 20px;
@@ -73,7 +148,7 @@ h2 {
     color: #8692A6;
     position: absolute ;
     font-size: 18px;
-    top: 7.2%; 
+    top: 10.2%; 
     left: 59.5%;
 }
 

@@ -19,25 +19,21 @@
 <body>
 
     {% block navbar %}
+    <nav>
+		<ul class="nav-links">
 
-    <div class="barra">
-		<ul>
-		  <li><a class="active" href="#home">Home</a></li>
-		  <li><a href="#news">Mi galeria</a></li>
-		  <li><a href="#contact">Mi cuenta</a></li>
-		  <li><a href="#about">Sobre los desarrolladores</a></li>
+		  <li><a href="{{ url_for('welcome')}}">Home</a></li>
 		  <li>
-		  	<div class="box">
-			<div class="container-1">
+			<div class="buscador">
     			<input type="search" id="search" placeholder="Buscar..." />
 			</div>
-		</div>
-		  	
-		  </li>
+          </li>
+		  <li><a href="">Mi galeria</a></li>
+		  <li><a href="#contact">Mi cuenta</a></li>
+		  <li><a href="{{ url_for('login')}}">Ingresar</a></li>
+          
 		</ul>
-			
-	</div>
-
+    </nav>
     {% endblock %}
 
     {% block content %}

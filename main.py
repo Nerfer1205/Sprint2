@@ -1,12 +1,13 @@
+from flask import Flask, render_template, request, redirect, url_for, session
 import os
-from flask import Flask, render_template,request,redirect,url_for
 import utils
-import db
-FOLDER_CARGA = os.path.abspath("resources") # carpeta donde se cargarán las imágenes.
+import querys
+import secrets
 from werkzeug.utils import secure_filename # para obtener el nombre del archivo de forma segura.
 
 app = Flask(__name__)
-
+FOLDER_CARGA = os.path.abspath("resources") # carpeta donde se cargarán las imágenes.
+app.config['SECRET_KEY'] = secrets.token_hex(20)
 
 @app.route('/', methods=["GET", "POST"])
 def login():
@@ -15,6 +16,7 @@ def login():
         password = request.form['password']
 
         if querys.autenticar_usuario(email, password):
+            session['email'] = email
             return redirect(url_for('welcome'))
         else:
             return render_template('login.html')
@@ -62,7 +64,7 @@ def image():
         path = os.path.join(app.config["FOLDER_CARGA"], filename) # ruta de la imagen, incluyendola.
         archivo.save(path)
         flash( 'Imagen guardada con éxito.' )
-    return render_template('actualizate_create.html',path = path) 
+    return render_template('actualizate_create.html', path = path) 
 
 @app.route('/download')
 def download():

@@ -14,7 +14,6 @@ def ingresar_usuario(correo, contrasena):
     )
 
     db.commit()
-    print("P2")
 
 
 def autenticar_usuario(correo, contrasena):
@@ -37,7 +36,6 @@ def insertar_imagen(nombre, archivo, usuario):
     )
 
     db.commit()
-    print("P2")
 
 
 def actualizar_imagen(nombre,archivo,usuario, id):
@@ -49,7 +47,6 @@ def actualizar_imagen(nombre,archivo,usuario, id):
     )
 
     db.commit()
-    print("P2")
 
 def borrar_imagen(id):
     db = get_db()
@@ -60,7 +57,6 @@ def borrar_imagen(id):
     )
 
     db.commit()
-    print("P2")
 
 def leer_imagen(id):
     db = get_db()
