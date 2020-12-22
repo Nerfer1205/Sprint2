@@ -16,6 +16,16 @@ def ingresar_usuario(correo, contrasena):
     db.commit()
 
 
+def leer_id_usuarios(correo):
+    db = get_db()
+    res = db.execute(
+        "SELECT id FROM usuarios WHERE correo = '%s'" %(
+            correo
+        )
+    )
+    return res.fetchall()
+
+
 def autenticar_usuario(correo, contrasena):
     db = get_db()
     res = db.execute("SELECT count(id) from usuarios where correo='%s'"  % (correo))
@@ -28,11 +38,11 @@ def autenticar_usuario(correo, contrasena):
 
 
 
-def insertar_imagen(nombre, archivo, usuario):
+def insertar_imagen(nombre, archivo, usuario,estado, tema):
     db = get_db()
     db.execute(
-        "INSERT INTO imagenes (nombre, archivo, usuario) VALUES ('%s','%s','%s')" % (
-            nombre, archivo, usuario)
+        "INSERT INTO imagenes (nombre, archivo, id_usuario, estado,descri) VALUES ('%s','%s','%s','%s','%s')" % (
+            nombre, archivo, usuario,estado, tema)
     )
 
     db.commit()
@@ -61,7 +71,7 @@ def borrar_imagen(id):
 def leer_imagen(id):
     db = get_db()
     res = db.execute(
-        "SELECT * FROM imagenes WHERE id_usuarios = '%s'" % (
+        "SELECT * FROM imagenes WHERE id_usuario = '%s'" % (
             id
         )
     )

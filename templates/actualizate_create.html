@@ -15,7 +15,7 @@
 		<img  src="{{ url_for('static', filename='images/flecha.png')}}">
 	</a>
 	<section class="contenedor">
-		<div class="exterior">
+		<!-- <div class="exterior">
 			<div class="interior">
 				
 				<img src="{{ url_for('static', filename='images/subida.png')}}">
@@ -25,8 +25,10 @@
     			{% endif %}
 			</div>
 			
-		</div>
+		</div> -->
 		<div class="info">
+			<p class="text">URL de la imágen</p>
+			<input class="field" type="text" name="archivo" required>
 			<p class="text">Nombre de tu imagen</p>
 			<input  class="field" type="text" name="nombre" required>
 			<br>

@@ -6,7 +6,6 @@ import secrets
 from werkzeug.utils import secure_filename # para obtener el nombre del archivo de forma segura.
 
 app = Flask(__name__)
-FOLDER_CARGA = os.path.abspath("resources") # carpeta donde se cargarán las imágenes.
 app.config['SECRET_KEY'] = secrets.token_hex(20)
 
 @app.route('/', methods=["GET", "POST"])
@@ -16,7 +15,9 @@ def login():
         password = request.form['password']
 
         if querys.autenticar_usuario(email, password):
-            session['email'] = email
+            res = querys.leer_id_usuarios(email)
+            id = res[0][0]
+            session['id_usuario'] = id
             return redirect(url_for('welcome'))
         else:
             return render_template('login.html')
@@ -47,23 +48,28 @@ def recovery():
 
 @app.route('/welcome')
 def welcome():
-    return render_template('welcome.html')
+    id_usuario = session['id_usuario']
+    res = querys.leer_imagen(id_usuario)
+    resLen = len(res)
+    return render_template('welcome.html', res = res, resLen = resLen)
 
-@app.route('/image',methods=('GET', 'POST'))  
+@app.route('/image',methods=('GET', 'POST'))
 def image():
     path = ''
     if request.method == 'POST':
-        archivo = request.files["archivo"]
+        archivo = request.form["archivo"]
         nombre = request.form["nombre"]
+        usuario = session["id_usuario"]
         tema = request.form["tema"]
+
         try:
             estado = request.form["estado"]
+            
         except:
             estado = 'off'
-        filename = secure_filename(archivo.filename) # obtener el nombre del archivo de forma segura.
-        path = os.path.join(app.config["FOLDER_CARGA"], filename) # ruta de la imagen, incluyendola.
-        archivo.save(path)
-        flash( 'Imagen guardada con éxito.' )
+       
+        querys.insertar_imagen(nombre, archivo,usuario,estado,tema)
+        
     return render_template('actualizate_create.html', path = path) 
 
 @app.route('/download')
