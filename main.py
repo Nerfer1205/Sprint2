@@ -6,7 +6,7 @@ import secrets
 from werkzeug.utils import secure_filename # para obtener el nombre del archivo de forma segura.
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = secrets.token_hex(20)
+app.config['SECRET_KEY'] = '123456678'
 
 @app.route('/', methods=["GET", "POST"])
 def login():
@@ -78,7 +78,7 @@ def image():
         
     return render_template('actualizate_create.html', path = path) 
 
-@app.route('/download')
+@app.route('/download/')
 def download():
     return render_template('download.html')
 
