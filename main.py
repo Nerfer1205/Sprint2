@@ -46,12 +46,18 @@ def sign_up():
 def recovery():
     return render_template('recovery.html')
 
-@app.route('/welcome')
+@app.route('/welcome',methods=('GET', 'POST'))
 def welcome():
-    id_usuario = session['id_usuario']
-    res = querys.leer_imagen(id_usuario)
-    resLen = len(res)
-    return render_template('welcome.html', res = res, resLen = resLen)
+    if request.method == 'GET':
+        id_usuario = session['id_usuario']
+        res = querys.leer_imagen(id_usuario)
+        resLen = len(res)
+        return render_template('welcome.html', res = res, resLen = resLen)
+    else:
+        busqueda = request.form["buscar"]
+        res = querys.buscar(busqueda)
+        resLen = len(res)
+        return render_template('welcome.html', res = res, resLen = resLen)
 
 @app.route('/image',methods=('GET', 'POST'))
 def image():

@@ -24,11 +24,17 @@
         <ul class="nav-links">
       
           <li><a href="{{ url_for('welcome')}}">Home</a></li>
+          <li >
+          <form method="POST">
+            <div class="buscador">
+                <input name="buscar" type="search" id="search" placeholder="Buscar..." />
+            </div>
+            
+          </li>
           <li>
-          <div class="buscador">
-              <input type="search" id="search" placeholder="Buscar..." />
-          </div>
-              </li>
+            <button type="submit" class="boton_personalizado" id="nav"></button>
+          </li>
+          </form>
           <li><a href="">Mi galeria</a></li>
           <li><a href="#contact">Mi cuenta</a></li>
           <li><a href="{{ url_for('login')}}">Ingresar</a></li>

@@ -20,16 +20,25 @@
 
     {% block navbar %}
     <nav>
-		<ul class="nav-links">
+		<ul class="nav-links" >
 
 		  <li><a href="{{ url_for('welcome')}}">Home</a></li>
 		  <li>
+      <form method="POST">
 			<div class="buscador">
-    			<input type="search" id="search" placeholder="Buscar..." />
+    			<input name="buscar" type="search" id="search" placeholder="Buscar..." />
 			</div>
-          </li>
+      </li>
+      <li>
+        <button type="submit" class="boton_personalizado" id="nav1"></button>
+      </li>
+      </form>
 		  <li><a href="">Mi galeria</a></li>
-		  <li><a href="#contact">Mi cuenta</a></li>
+      <li><a href="#contact">Mi cuenta</a>
+        <ul>
+          <li><a href="{{ url_for('image') }}">Subir imagen</a></li>
+        </ul>
+      </li>
 		  <li><a href="{{ url_for('login')}}">Ingresar</a></li>
           
 		</ul>

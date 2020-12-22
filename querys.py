@@ -76,3 +76,12 @@ def leer_imagen(id):
         )
     )
     return res.fetchall()
+
+def buscar(b):
+    db = get_db()
+    res = db.execute(
+        "SELECT * FROM imagenes WHERE nombre = '%s'" % (
+            b
+        )
+    )
+    return res.fetchall()
